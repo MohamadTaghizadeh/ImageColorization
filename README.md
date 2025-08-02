@@ -1,5 +1,5 @@
 # Image Colorization
-Image Colorization is a service to colorize the gray scale images using Generative AI.
+Image Colorization is a service to colorize the grayscale images using Generative AI.
 
 **The Diagram**:
 <div align="center">
