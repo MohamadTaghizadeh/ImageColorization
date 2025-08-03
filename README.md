@@ -9,11 +9,19 @@ Image Colorization is a service to colorize the grayscale images using Generativ
 
 
 > engine
+
 > model
+
 > train
+
 > backend
+
 > connection
+
 > docker
+
 > merge request
+
 > upload
+
 > finish
