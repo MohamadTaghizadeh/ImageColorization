@@ -12,7 +12,7 @@ Image Colorization is a service to colorize the grayscale images using Generativ
 
 > model
 
-> train
+> train on SSH
 
 > backend
 
