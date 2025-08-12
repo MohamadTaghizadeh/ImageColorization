@@ -8,6 +8,13 @@ Image Colorization is a service to colorize the grayscale images using Generativ
 </div>
 
 
+### SSH GPU Processing
+```
+python3 -m venv myenv       # Create a venv is necessary! If you have it previously (for the  past project), pass this step.
+source myenv/bin/activate   # Activate it
+pip install gdown           # Install inside the venv to download files
+```
+
 > engine
 
 > model
