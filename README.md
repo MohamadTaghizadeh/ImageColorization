@@ -7,7 +7,7 @@ Image Colorization is a service to colorize the grayscale images using Generativ
 
 </div>
 
-### Real Outputs
+### Real Input Image and Outputs
 
 Input Geayscale Image      |  Colorized 1              |  Colorized 2              |  Colorized 3              |  Colorized 4              |  Colorized 5        
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------: 
