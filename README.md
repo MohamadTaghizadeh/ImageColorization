@@ -1,3 +1,5 @@
+## Updating.. 
+
 # Image Colorization
 Image Colorization is a service to colorize the grayscale images using Generative AI.
 
