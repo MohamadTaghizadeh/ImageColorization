@@ -32,6 +32,8 @@ pip install gdown           # Install inside the venv to download files
 
 > train on SSH
 
+> train on Google Colab Using 150 GB Dataset 
+
 > backend
 
 > connection
