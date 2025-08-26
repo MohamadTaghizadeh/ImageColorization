@@ -1,0 +1,4 @@
+CONSOLE_LOG_LEVEL: INFO
+FILE_LOG_LEVEL: INFO
+QUEUE_CONNECTION: amqp://guest:guest@localhost:5672/
+MODEL_ID: video-to-txt

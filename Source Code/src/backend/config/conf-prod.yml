@@ -1,0 +1,7 @@
+CONSOLE_LOG_LEVEL: INFO
+FILE_LOG_LEVEL: INFO
+QUEUE_CONNECTION: amqp://guest:guest@queue/
+DB_CONNECTION: sqlite:////approot/data/database/db.sql
+DB_DIR: /approot/data/database
+AIHIVE_ADDR: https://api.aihive.ir  # webhook base address
+BASE_URL_FILE_LINK: http://192.168.0.13:8009  # current service base address

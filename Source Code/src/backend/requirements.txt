@@ -1,0 +1,11 @@
+fastapi==0.109.0
+uvicorn==0.34.2
+loguru==0.7.3
+PyYAML==6.0.2
+opencv-python==4.11.0.86
+SQLAlchemy==2.0.38
+pydantic==2.5.1
+aio-pika==9.5.4
+requests==2.32.3
+python-multipart==0.0.5
+#python-jose==3.3.0

@@ -1,0 +1,75 @@
+services:
+  queue:
+    image: rabbitmq:4.0.6-management
+    ports:
+      - ${PORT_RABBIT_MANAGEMENT}:15672
+    volumes:
+      - ../../Outputs/rabbitmq_logs:/var/log/rabbitmq
+      - ../../Outputs/rabbitmq_data:/var/lib/rabbitmq
+      - ./rabbitmq/config/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    environment:
+      - TZ=Asia/Tehran
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq.conf  # Use the custom config file
+      - RABBITMQ_LOGS=/var/log/rabbitmq/rabbit.log  # Log file location
+    restart: always
+    networks:
+      robinnet: null
+  engine:
+    build:
+      context: ./engine
+      dockerfile: ./Dockerfile
+      args:
+          PIP_INDEX_URL: ${PIP_INDEX_URL}
+          PIP_EXTRA_INDEX_URL: ${PIP_EXTRA_INDEX_URL}
+          PIP_TRUSTED_HOST: ${PIP_TRUSTED_HOST}
+          PIP_TIMEOUT: 1000
+          PIP_DISABLE_PIP_VERSION_CHECK: 1
+          PIP_NO_CACHE_DIR: 1
+          PIP_NO_BINARY: ":all:"
+    command: bash ./cmd.sh
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./engine:/approot/src
+      - ../../Models:/approot/models
+      - ../../Outputs:/approot/data
+    environment:
+      - TZ=Asia/Tehran
+      - MPLCONFIGDIR=/tmp/matplotlib
+      - MODE
+    user: ${CUID}
+    restart: always
+    depends_on:
+      - queue
+    image: robin-videototxt-engine:0.0.1
+    networks:
+      robinnet: null
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+      args:
+          PIP_INDEX_URL: ${PIP_INDEX_URL}
+          PIP_EXTRA_INDEX_URL: ${PIP_EXTRA_INDEX_URL}
+          PIP_TRUSTED_HOST: ${PIP_TRUSTED_HOST}
+          PIP_TIMEOUT: 1000
+    command: bash ./cmd.sh
+    ports:
+      - ${PORT_BACKEND}:8009
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./backend:/approot/src
+      - ../Outputs:/approot/data
+    environment:
+      - TZ=Asia/Tehran
+      - MODE
+    user: ${CUID}
+    restart: always
+    depends_on:
+      - queue
+      - engine
+    image: robin-videototxt-backend:0.0.2
+    networks:
+      robinnet: null    
+networks:
+  robinnet:
+    driver: bridge
